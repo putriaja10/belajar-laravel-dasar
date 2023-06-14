@@ -16,6 +16,9 @@ class AppEnvironmentTest extends TestCase
      */
     public function testAppEnv()
     {
-        var_dump(App::environment());
+        if(App::environment(['testing', 'prod', 'dev'])){
+            //kode program kita
+            self::assertTrue(true);
+        }
     }
 }

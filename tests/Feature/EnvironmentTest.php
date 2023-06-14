@@ -15,8 +15,17 @@ class EnvironmentTest extends TestCase
      */
     public function test_example()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        $youtube = env("YOUTUBE");
+        
+        self::asserEquals("Programmer Zamman Now", $youtube);
+    }
+    public function testDefaultEnv()
+    {
+        $youtube = env("AUTOR","Eko");
+        
+        self::asserEquals("Eko", $author);
     }
 }
+
+
+

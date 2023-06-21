@@ -7,6 +7,6 @@
         public function foo(): string
     
     {
-        return "Foo";
+        return "Foo ";
     }
 }

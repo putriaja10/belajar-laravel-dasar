@@ -5,8 +5,8 @@ namespace app\Data;
 class Person 
 {
     public function __construct(
-        public string $fisrtName,
-        public string $lastName,   
+        public string $firstName,
+        public string $lastName  
     )
     {
         

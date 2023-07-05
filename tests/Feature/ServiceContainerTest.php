@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Data\Foo;
+use App\Data\Bar;
 use App\Data\Person;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -11,7 +12,7 @@ use Tests\TestCase;
 class ServiceContainerTest extends TestCase
 {
 
-    public function testDependencyInjection()
+    public function testDependency()
     {
       $foo1 = $this->app->make(Foo::class); // new Foo()
       $foo2 = $this->app->make(Foo::class); // new Foo()
@@ -44,7 +45,7 @@ class ServiceContainerTest extends TestCase
             return new Person ('Eko','Khannedy');
         });
         $person1 = $this->app->make(Person::class);//new person('eko','khannedy'); if not exists
-        $person2 = $this->app->make(Person::class);//return existing
+        $person2 = $this->app->make(Person::class);//return existing sudah ada sebelumnya 
 
         self::assertEquals('Eko', $person1->firstName);
         self::assertEquals('Eko', $person2->firstName);
@@ -68,8 +69,18 @@ class ServiceContainerTest extends TestCase
         self::assertEquals('Eko', $person2->firstName);
         self::assertSame($person1, $person2);
     }
+/*
+    public function testDependencyInjection()
+    {
+        $this->app->singleton(Foo::class, function($app){
+            return new Foo();
+        });
 
+        $foo = $this->app->make(Foo::class);
+        $bar = $this->app->make(Bar::class);
 
+        self::assertNotSame($foo, $bar->foo);
+    }
 
   /*  public function testInterfaceToClass()
         {
